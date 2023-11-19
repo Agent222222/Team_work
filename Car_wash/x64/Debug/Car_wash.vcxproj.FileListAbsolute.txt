@@ -1,0 +1,5 @@
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Car_wash.vcxproj.AssemblyReference.cache
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Car_wash.vcxproj.SuggestedBindingRedirects.cache
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Carwash.CarForm.resources
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Car_wash.vcxproj.GenerateResource.cache
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Car_wash.exe
