@@ -41,9 +41,9 @@ namespace Carwash {
 	private: System::Windows::Forms::ToolStripMenuItem^ threeToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripLabel2;
-	private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem2;
-	private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem3;
+
+
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
@@ -56,6 +56,7 @@ namespace Carwash {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 
 
 	protected:
@@ -79,9 +80,6 @@ namespace Carwash {
 			this->oneToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->twoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->threeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->toolStripLabel2 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
-			this->toolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->toolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
@@ -96,6 +94,7 @@ namespace Carwash {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->toolStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -103,10 +102,7 @@ namespace Carwash {
 			// toolStrip1
 			// 
 			this->toolStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->toolStripLabel1,
-					this->toolStripLabel2
-			});
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripLabel1 });
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Size = System::Drawing::Size(945, 34);
@@ -141,31 +137,9 @@ namespace Carwash {
 			this->threeToolStripMenuItem->Size = System::Drawing::Size(157, 34);
 			this->threeToolStripMenuItem->Text = L"Three";
 			// 
-			// toolStripLabel2
-			// 
-			this->toolStripLabel2->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->toolStripMenuItem2,
-					this->toolStripMenuItem3
-			});
-			this->toolStripLabel2->Name = L"toolStripLabel2";
-			this->toolStripLabel2->Size = System::Drawing::Size(172, 29);
-			this->toolStripLabel2->Text = L"Amount of cabins";
-			// 
-			// toolStripMenuItem2
-			// 
-			this->toolStripMenuItem2->Name = L"toolStripMenuItem2";
-			this->toolStripMenuItem2->Size = System::Drawing::Size(124, 34);
-			this->toolStripMenuItem2->Text = L"1";
-			// 
-			// toolStripMenuItem3
-			// 
-			this->toolStripMenuItem3->Name = L"toolStripMenuItem3";
-			this->toolStripMenuItem3->Size = System::Drawing::Size(124, 34);
-			this->toolStripMenuItem3->Text = L"2";
-			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(46, 108);
+			this->textBox1->Location = System::Drawing::Point(46, 104);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(218, 26);
 			this->textBox1->TabIndex = 1;
@@ -173,7 +147,7 @@ namespace Carwash {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(42, 72);
+			this->label1->Location = System::Drawing::Point(42, 68);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(174, 20);
 			this->label1->TabIndex = 2;
@@ -282,18 +256,28 @@ namespace Carwash {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(316, 525);
+			this->button2->Location = System::Drawing::Point(703, 524);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(204, 66);
 			this->button2->TabIndex = 14;
 			this->button2->Text = L"Additional info";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(363, 526);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(200, 65);
+			this->button3->TabIndex = 15;
+			this->button3->Text = L"Delete";
+			this->button3->UseVisualStyleBackColor = true;
+			// 
 			// CarForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(945, 633);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
