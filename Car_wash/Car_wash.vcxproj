@@ -127,7 +127,6 @@
     <ClInclude Include="CarForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Info.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CarForm.resx">
