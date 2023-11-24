@@ -1,96 +1,111 @@
 #pragma once
 #include <iostream>
 #include<vector>
-using namespace std;
+
 class CInfo;
-vector<CInfo>dayInfo;
+std::vector<CInfo>dayInfo;
 
 class CInfo
 {
 private:
-    string wName;
-    string wSurname;
-    string procedure;
-    string startTime;
-    string endTime;
-    string date;
-    string number;
+    std::string fName;
+    std::string procedure;
+    std::string startTime;
+    std::string endTime;
+    std::string date;
+
 public:
-    void setName(const string& name)
-    {
-        wName = name;
+
+    CInfo(std::string fName_inpt, std::string startTime_inpt, std::string endTime_inpt, std::string date_inpt) {
+        fName = fName_inpt;
+        startTime = startTime_inpt;
+        endTime = endTime_inpt;
+        date = date_inpt;
     }
-    void setSurname(const string& surname)
+
+    void setName(const std::string& name)
     {
-        wSurname = surname;
+        fName = name;
     }
-    void setProcedure(const string& action)
+    void setProcedure(const std::string& action)
     {
         procedure = action;
     }
-    void setStartTime(const string& start)
+    void setStartTime(const std::string& start)
     {
         startTime = start;
     }
-    void setEndTime(const string& end)
+    void setEndTime(const std::string& end)
     {
         endTime = end;
     }
-
-    void setDate(const string& date_)
+    void setDate(const std::string& date_)
     {
         date = date_;
     }
-    void setNumber(const string& number_)
+
+
+
+
+
+    const std::string& getName() const
     {
-        number = number_;
+        return fName;
     }
-
-
-
-
-
-    const string& getName() const
-    {
-        return wName;
-    }
-    const string& getSurname()const
-    {
-        return wSurname;
-    }
-    const string& getProcedure()const
+    const std::string& getProcedure()const
     {
         return procedure;
     }
-    const string& getStartTime()const
+    const std::string& getStartTime()const
     {
         return startTime;
     }
-    const string& getEndTime()const
+    const std::string& getEndTime()const
     {
         return endTime;
     }
-
-    const string& getDate()const
+    const std::string& getDate()const
     {
         return date;
     }
-    const string& getNumber()const
-    {
-        return number;
+
+    System::String^ GetProperty(const int index) const { 
+        switch (index) {
+        case 0:
+            return msclr::interop::marshal_as<System::String^>(fName);
+            break;
+
+        case 1:
+            return msclr::interop::marshal_as<System::String^>(procedure);
+            break;
+
+        case 2:
+            return msclr::interop::marshal_as<System::String^>(startTime);
+            break;
+
+        case 3:
+            return msclr::interop::marshal_as<System::String^>(endTime);
+            break;
+
+        case 4:
+            return msclr::interop::marshal_as<System::String^>(date);
+            break;
+
+        default:
+            return "";
+        }
     }
 
     friend std::istream& operator>>(std::istream& is, CInfo& worker) {
-        is >> worker.wName >> worker.wSurname >> worker.procedure >> worker.startTime
-            >> worker.endTime >> worker.date >> worker.number;
+        is >> worker.fName >> worker.procedure >> worker.startTime
+            >> worker.endTime >> worker.date;
         return is;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const CInfo& worker)
     {
-        os << worker.wName << " " << worker.wSurname << " " << worker.procedure << " "
-            << worker.startTime << " " << worker.endTime << " " << worker.date << " "
-            << worker.number;
+        os << worker.fName << " " << worker.procedure << " "
+            << worker.startTime << " " << worker.endTime << " " << worker.date << std::endl;
         return os;
     }
 };
