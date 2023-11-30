@@ -122,16 +122,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CarForm.cpp" />
+    <ClCompile Include="EmplForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="EmplForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Info.h" />
+    <ClInclude Include="workers.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CarForm.resx">
       <DependentUpon>CarForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmplForm.resx">
+      <DependentUpon>EmplForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

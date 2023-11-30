@@ -18,12 +18,21 @@
     <ClCompile Include="CarForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EmplForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EmplForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="workers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

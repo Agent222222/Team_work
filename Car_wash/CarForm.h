@@ -3,14 +3,13 @@
 #include <fstream>
 #include <algorithm>
 #include <windows.h>
-#include <msclr/marshal_cppstd.h>
 #using <System.dll>
 #using <System.Drawing.dll>
 #using <System.Windows.Forms.dll>
 
+#include "EmplForm.h"
 #include "Info.h"
 namespace Carwash {
-
 	
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -35,7 +34,11 @@ namespace Carwash {
 			//TODO: Add the constructor code here
 			//
 		}
-
+	private: System::Windows::Forms::CheckBox^ checkBox1;
+	public:
+	private: System::Windows::Forms::CheckBox^ checkBox2;
+	private: System::Windows::Forms::CheckBox^ checkBox3;
+		   EmplForm obj;
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -49,28 +52,19 @@ namespace Carwash {
 		}
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
 	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripLabel1;
-	private: System::Windows::Forms::ToolStripMenuItem^ oneToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ twoToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ threeToolStripMenuItem;
-	private: System::Windows::Forms::TextBox^ full_name;
-
 	private: System::Windows::Forms::Label^ label1;
-
-
-
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::RadioButton^ radioButton1;
-	private: System::Windows::Forms::RadioButton^ radioButton2;
-	private: System::Windows::Forms::RadioButton^ radioButton3;
+
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
@@ -81,7 +75,11 @@ namespace Carwash {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::Button^ button4;
-
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::RadioButton^ radioButton3;
 
 
 	protected:
@@ -103,11 +101,7 @@ namespace Carwash {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CarForm::typeid));
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->toolStripLabel1 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
-			this->oneToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->twoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->threeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
-			this->full_name = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -115,9 +109,6 @@ namespace Carwash {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -130,6 +121,14 @@ namespace Carwash {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
+			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
 			this->toolStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -152,31 +151,10 @@ namespace Carwash {
 			// 
 			// toolStripLabel1
 			// 
-			this->toolStripLabel1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->oneToolStripMenuItem,
-					this->twoToolStripMenuItem, this->threeToolStripMenuItem
-			});
 			this->toolStripLabel1->Name = L"toolStripLabel1";
 			this->toolStripLabel1->Size = System::Drawing::Size(208, 29);
 			this->toolStripLabel1->Text = L"Amount of employees";
-			// 
-			// oneToolStripMenuItem
-			// 
-			this->oneToolStripMenuItem->Name = L"oneToolStripMenuItem";
-			this->oneToolStripMenuItem->Size = System::Drawing::Size(157, 34);
-			this->oneToolStripMenuItem->Text = L"One";
-			// 
-			// twoToolStripMenuItem
-			// 
-			this->twoToolStripMenuItem->Name = L"twoToolStripMenuItem";
-			this->twoToolStripMenuItem->Size = System::Drawing::Size(157, 34);
-			this->twoToolStripMenuItem->Text = L"Two";
-			// 
-			// threeToolStripMenuItem
-			// 
-			this->threeToolStripMenuItem->Name = L"threeToolStripMenuItem";
-			this->threeToolStripMenuItem->Size = System::Drawing::Size(157, 34);
-			this->threeToolStripMenuItem->Text = L"Three";
+			this->toolStripLabel1->Click += gcnew System::EventHandler(this, &CarForm::toolStripLabel1_Click);
 			// 
 			// toolStripButton1
 			// 
@@ -191,13 +169,6 @@ namespace Carwash {
 			this->toolStripButton1->Text = L"toolStripButton1";
 			this->toolStripButton1->Click += gcnew System::EventHandler(this, &CarForm::toolStripButton1_Click);
 			// 
-			// full_name
-			// 
-			this->full_name->Location = System::Drawing::Point(46, 100);
-			this->full_name->Name = L"full_name";
-			this->full_name->Size = System::Drawing::Size(232, 26);
-			this->full_name->TabIndex = 1;
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -205,7 +176,7 @@ namespace Carwash {
 				static_cast<System::Byte>(204)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(186)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			this->label1->Location = System::Drawing::Point(42, 68);
+			this->label1->Location = System::Drawing::Point(75, 54);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(203, 24);
 			this->label1->TabIndex = 2;
@@ -270,36 +241,6 @@ namespace Carwash {
 			this->textBox3->Size = System::Drawing::Size(100, 26);
 			this->textBox3->TabIndex = 8;
 			// 
-			// radioButton1
-			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(56, 351);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(21, 20);
-			this->radioButton1->TabIndex = 9;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->UseVisualStyleBackColor = true;
-			// 
-			// radioButton2
-			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(56, 404);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(21, 20);
-			this->radioButton2->TabIndex = 10;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->UseVisualStyleBackColor = true;
-			// 
-			// radioButton3
-			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(56, 455);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(21, 20);
-			this->radioButton3->TabIndex = 11;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->UseVisualStyleBackColor = true;
-			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
@@ -308,11 +249,11 @@ namespace Carwash {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(322, 80);
+			this->dataGridView1->Location = System::Drawing::Point(296, 55);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(585, 403);
+			this->dataGridView1->Size = System::Drawing::Size(611, 428);
 			this->dataGridView1->TabIndex = 12;
 			// 
 			// Column1
@@ -429,6 +370,89 @@ namespace Carwash {
 			this->button4->Text = L"Delete";
 			this->button4->UseVisualStyleBackColor = false;
 			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.150944F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(186)),
+				static_cast<System::Int32>(static_cast<System::Byte>(144)));
+			this->label8->Location = System::Drawing::Point(75, 90);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(203, 24);
+			this->label8->TabIndex = 20;
+			this->label8->Text = L"First and Second name";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.150944F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(186)),
+				static_cast<System::Int32>(static_cast<System::Byte>(144)));
+			this->label9->Location = System::Drawing::Point(75, 128);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(203, 24);
+			this->label9->TabIndex = 21;
+			this->label9->Text = L"First and Second name";
+			// 
+			// radioButton1
+			// 
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->Location = System::Drawing::Point(48, 351);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(21, 20);
+			this->radioButton1->TabIndex = 22;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Location = System::Drawing::Point(48, 404);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(21, 20);
+			this->radioButton2->TabIndex = 23;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->UseVisualStyleBackColor = true;
+			// 
+			// radioButton3
+			// 
+			this->radioButton3->AutoSize = true;
+			this->radioButton3->Location = System::Drawing::Point(48, 455);
+			this->radioButton3->Name = L"radioButton3";
+			this->radioButton3->Size = System::Drawing::Size(21, 20);
+			this->radioButton3->TabIndex = 24;
+			this->radioButton3->TabStop = true;
+			this->radioButton3->UseVisualStyleBackColor = true;
+			// 
+			// checkBox1
+			// 
+			this->checkBox1->AutoSize = true;
+			this->checkBox1->Location = System::Drawing::Point(48, 54);
+			this->checkBox1->Name = L"checkBox1";
+			this->checkBox1->Size = System::Drawing::Size(22, 21);
+			this->checkBox1->TabIndex = 25;
+			this->checkBox1->UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this->checkBox2->AutoSize = true;
+			this->checkBox2->Location = System::Drawing::Point(48, 90);
+			this->checkBox2->Name = L"checkBox2";
+			this->checkBox2->Size = System::Drawing::Size(22, 21);
+			this->checkBox2->TabIndex = 26;
+			this->checkBox2->UseVisualStyleBackColor = true;
+			// 
+			// checkBox3
+			// 
+			this->checkBox3->AutoSize = true;
+			this->checkBox3->Location = System::Drawing::Point(48, 128);
+			this->checkBox3->Name = L"checkBox3";
+			this->checkBox3->Size = System::Drawing::Size(22, 21);
+			this->checkBox3->TabIndex = 27;
+			this->checkBox3->UseVisualStyleBackColor = true;
+			// 
 			// CarForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -436,6 +460,14 @@ namespace Carwash {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
 				static_cast<System::Int32>(static_cast<System::Byte>(43)));
 			this->ClientSize = System::Drawing::Size(945, 632);
+			this->Controls->Add(this->checkBox3);
+			this->Controls->Add(this->checkBox2);
+			this->Controls->Add(this->checkBox1);
+			this->Controls->Add(this->radioButton3);
+			this->Controls->Add(this->radioButton2);
+			this->Controls->Add(this->radioButton1);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -443,9 +475,6 @@ namespace Carwash {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->radioButton3);
-			this->Controls->Add(this->radioButton2);
-			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label4);
@@ -453,7 +482,6 @@ namespace Carwash {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->full_name);
 			this->Controls->Add(this->toolStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"CarForm";
@@ -477,42 +505,116 @@ namespace Carwash {
 			}
 		}
 
-
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	CInfo* elem = new CInfo(marshal_as<std::string>(full_name->Text), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
-	if (radioButton1->Checked) {
-		elem->setProcedure("Кузов");
-	}
-	else if (radioButton2->Checked) {
-		elem->setProcedure("Кузов + Салон");
-	}
-	else if (radioButton3->Checked) {
-		elem->setProcedure("Хімчистка");
-	}
-	dayInfo.push_back(*elem);
-	refill();
 
-	std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
-
-	const char* fileName = filename.c_str();
-
-	std::ofstream outputFile;
-
-	outputFile.open(fileName);
-
-	if (!outputFile.is_open()) {
-		MessageBox::Show(this, "File was not opened", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		return; 
-	}
-
-	outputFile.clear();
-
-	for (int i = 0; i < dayInfo.size(); i++) {
-		if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
-			outputFile << dayInfo[i];
+	if (checkBox1->Checked) {
+		CInfo* elem = new CInfo(obj.list->GetName1(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
+		if (radioButton1->Checked) {
+			elem->setProcedure("Кузов");
 		}
+		else if (radioButton2->Checked) {
+			elem->setProcedure("Кузов + Салон");
+		}
+		else if (radioButton3->Checked) {
+			elem->setProcedure("Хімчистка");
+		}
+		dayInfo.push_back(*elem);
+		refill();
+
+		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+
+		const char* fileName = filename.c_str();
+
+		std::ofstream outputFile;
+
+		outputFile.open(fileName);
+
+		if (!outputFile.is_open()) {
+			MessageBox::Show(this, "File was not opened", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		outputFile.clear();
+
+		for (int i = 0; i < dayInfo.size(); i++) {
+			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
+				outputFile << dayInfo[i];
+			}
+		}
+		outputFile.close();
 	}
-	outputFile.close();
+	if (checkBox2->Checked) {
+		CInfo* elem = new CInfo(obj.list->GetName2(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
+		if (radioButton1->Checked) {
+			elem->setProcedure("Кузов");
+		}
+		else if (radioButton2->Checked) {
+			elem->setProcedure("Кузов + Салон");
+		}
+		else if (radioButton3->Checked) {
+			elem->setProcedure("Хімчистка");
+		}
+		dayInfo.push_back(*elem);
+		refill();
+
+		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+
+		const char* fileName = filename.c_str();
+
+		std::ofstream outputFile;
+
+		outputFile.open(fileName);
+
+		if (!outputFile.is_open()) {
+			MessageBox::Show(this, "File was not opened", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		outputFile.clear();
+
+		for (int i = 0; i < dayInfo.size(); i++) {
+			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
+				outputFile << dayInfo[i];
+			}
+		}
+		outputFile.close();
+	}
+	if (checkBox3->Checked) {
+		CInfo* elem = new CInfo(obj.list->GetName3(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
+		if (radioButton1->Checked) {
+			elem->setProcedure("Кузов");
+		}
+		else if (radioButton2->Checked) {
+			elem->setProcedure("Кузов + Салон");
+		}
+		else if (radioButton3->Checked) {
+			elem->setProcedure("Хімчистка");
+		}
+		dayInfo.push_back(*elem);
+		refill();
+
+		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+
+		const char* fileName = filename.c_str();
+
+		std::ofstream outputFile;
+
+		outputFile.open(fileName);
+
+		if (!outputFile.is_open()) {
+			MessageBox::Show(this, "File was not opened", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		outputFile.clear();
+
+		for (int i = 0; i < dayInfo.size(); i++) {
+			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
+				outputFile << dayInfo[i];
+			}
+		}
+		outputFile.close();
+	}
 }
 
 
@@ -522,5 +624,28 @@ private: System::Void toolStripButton1_Click(System::Object^ sender, System::Eve
 
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+private: System::Void toolStripLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
+	obj.ShowDialog();
+	
+	if (obj.list->GetAmount() == 3) {
+		checkBox2->Visible = true;
+		label8->Visible = true;
+		checkBox3->Visible = true;
+		label9->Visible = true;
+	}
+	else if (obj.list->GetAmount() == 2) {
+		checkBox2->Visible = true;
+		label8->Visible = true;
+		checkBox3->Visible = false;
+		label9->Visible = false;
+	}
+	else {
+		checkBox2->Visible = false;
+		label8->Visible = false;
+		checkBox3->Visible = false;
+		label9->Visible = false;
+	}
+}
+
 };
 }

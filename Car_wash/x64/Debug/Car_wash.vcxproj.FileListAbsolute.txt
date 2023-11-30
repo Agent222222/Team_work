@@ -8,3 +8,4 @@ D:\source\repos\CarWashProg\Team_work\Car_wash\x64\Debug\Car_wash.vcxproj.Sugges
 D:\source\repos\CarWashProg\Team_work\Car_wash\x64\Debug\Carwash.CarForm.resources
 D:\source\repos\CarWashProg\Team_work\Car_wash\x64\Debug\Car_wash.vcxproj.GenerateResource.cache
 D:\source\repos\CarWashProg\Team_work\Car_wash\x64\Debug\Car_wash.exe
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Carwash.EmplForm.resources
