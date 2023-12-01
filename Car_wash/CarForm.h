@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <cctype>
 #include <windows.h>
 #using <System.dll>
 #using <System.Drawing.dll>
@@ -9,6 +10,11 @@
 
 #include "EmplForm.h"
 #include "Info.h"
+
+int Salary1 = 0;
+int Salary2 = 0;
+int Salary3 = 0;
+
 namespace Carwash {
 	
 	using namespace System;
@@ -20,6 +26,13 @@ namespace Carwash {
 	using namespace System::Drawing;
 	using namespace msclr::interop;
 	using namespace System::IO;
+
+
+	bool containsNonDigitAndColon(const std::string& str) {
+		return std::any_of(str.begin(), str.end(), [](unsigned char c) {
+			return !std::isdigit(c) && c != ':';
+			});
+	}
 
 	/// <summary>
 	/// Summary for CarForm
@@ -321,6 +334,7 @@ namespace Carwash {
 			this->button2->TabIndex = 14;
 			this->button2->Text = L"Additional info";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &CarForm::button2_Click);
 			// 
 			// label5
 			// 
@@ -369,6 +383,7 @@ namespace Carwash {
 			this->button4->TabIndex = 19;
 			this->button4->Text = L"Delete";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &CarForm::button4_Click);
 			// 
 			// label8
 			// 
@@ -505,18 +520,35 @@ namespace Carwash {
 			}
 		}
 
+
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	if (checkBox1->Checked) {
+
+		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		int am = 1;
+		if (checkBox2->Checked) {
+			am++;
+		}
+		if (checkBox3->Checked) {
+			am++;
+		}
+
 		CInfo* elem = new CInfo(obj.list->GetName1(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			Salary1 += 350/am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			Salary1 += 750/am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			Salary1 += 1800/am;
 		}
 		dayInfo.push_back(*elem);
 		refill();
@@ -541,18 +573,49 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				outputFile << dayInfo[i];
 			}
 		}
+
+		if (obj.list->GetAmount() == 3) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+			outputFile << obj.list->GetName3() << " : " << Salary3 / 2 << std::endl;
+		}
+		else if (obj.list->GetAmount() == 2) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+		}
+		else {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+		}
+
 		outputFile.close();
 	}
 	if (checkBox2->Checked) {
+
+		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		int am = 1;
+		if (checkBox1->Checked) {
+			am++;
+		}
+		if (checkBox3->Checked) {
+			am++;
+		}
+
 		CInfo* elem = new CInfo(obj.list->GetName2(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			Salary2 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			Salary2 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			Salary2 += 1800 / am;
 		}
 		dayInfo.push_back(*elem);
 		refill();
@@ -577,18 +640,49 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				outputFile << dayInfo[i];
 			}
 		}
+
+		if (obj.list->GetAmount() == 3) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+			outputFile << obj.list->GetName3() << " : " << Salary3 / 2 << std::endl;
+		}
+		else if (obj.list->GetAmount() == 2) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+		}
+		else {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+		}
+
 		outputFile.close();
 	}
 	if (checkBox3->Checked) {
+
+		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		int am = 1;
+		if (checkBox2->Checked) {
+			am++;
+		}
+		if (checkBox1->Checked) {
+			am++;
+		}
+
 		CInfo* elem = new CInfo(obj.list->GetName3(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			Salary3 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			Salary3 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			Salary3 += 1800 / am;
 		}
 		dayInfo.push_back(*elem);
 		refill();
@@ -613,17 +707,28 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				outputFile << dayInfo[i];
 			}
 		}
-		outputFile.close();
+
+		if (obj.list->GetAmount() == 3) {
+			outputFile << obj.list->GetName1() << " : " << Salary1/2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2/2 << std::endl;
+			outputFile << obj.list->GetName3() << " : " << Salary3/2 << std::endl;
+		}
+		else if (obj.list->GetAmount() == 2) {
+			outputFile << obj.list->GetName1() << " : " << Salary1/2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2/2 << std::endl;
+		}
+		else {
+			outputFile << obj.list->GetName1() << " : " << Salary1/2 << std::endl;
+		}
+
+ 		outputFile.close();
 	}
 }
-
 
 private: System::Void toolStripButton1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
 
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 private: System::Void toolStripLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
 	obj.ShowDialog();
 	
@@ -632,20 +737,125 @@ private: System::Void toolStripLabel1_Click(System::Object^ sender, System::Even
 		label8->Visible = true;
 		checkBox3->Visible = true;
 		label9->Visible = true;
+		label1->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName1());
+		label8->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName2());
+		label9->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName3());
+
 	}
 	else if (obj.list->GetAmount() == 2) {
 		checkBox2->Visible = true;
 		label8->Visible = true;
 		checkBox3->Visible = false;
 		label9->Visible = false;
+		label1->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName1());
+		label8->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName2());
+
 	}
 	else {
 		checkBox2->Visible = false;
 		label8->Visible = false;
 		checkBox3->Visible = false;
 		label9->Visible = false;
+		label1->Text = msclr::interop::marshal_as<System::String^>(obj.list->GetName1());
 	}
 }
 
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (dataGridView1->SelectedRows->Count > 0) { // перевірка, чи елемент вибрано
+		int i = dayInfo.size() - 1;
+		int selectedIndex = dataGridView1->SelectedRows[0]->Index; // знаходження вибраного елементу
+
+		if (dayInfo[selectedIndex].getProcedure() == "Кузов") {
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
+			//	Salary1 -= 350 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
+			//	Salary2 -= 350 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
+			//	Salary3 -= 350 / ;
+			}
+
+		}
+		else if (dayInfo[selectedIndex].getProcedure() == "Кузов + Салон") {
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
+			//	Salary1 -= 750 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
+			//	Salary2 -= 750 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
+			//	Salary3 -= 750 / ;
+			}
+		}
+		else {
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
+			//	Salary1 -= 1800 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
+			//	Salary2 -= 1800 / ;
+			}
+			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
+			//	Salary3 -= 1800 / ;
+			}
+		}
+
+		dataGridView1->RowCount--;
+		for (int k = selectedIndex; k < dataGridView1->RowCount - 1; k++) { // очищення таблиці від вибраного елементу
+			for (int j = 0; j < 5; j++) {
+				dataGridView1->Rows[k]->Cells[j]->Value = dayInfo[k + 1].GetProperty(j);
+			}
+		}
+
+		std::vector<CInfo> daynfobuffer;
+
+		if (selectedIndex < dayInfo.size()) { 
+			while (i >= selectedIndex) {
+				if (i == selectedIndex) {
+					dayInfo.pop_back();
+				}
+				else {
+					daynfobuffer.push_back(dayInfo[i]);
+					dayInfo.pop_back();
+				}
+				i--;
+			}
+			i = daynfobuffer.size() - 1;
+			while (i >= 0) {
+				dayInfo.push_back(daynfobuffer[i]);
+				daynfobuffer.pop_back();
+				i--;
+			}
+		}
+
+		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+
+		const char* fileName = filename.c_str();
+
+		std::ofstream outputFile;
+
+		outputFile.open(fileName);
+
+		if (!outputFile.is_open()) {
+			MessageBox::Show(this, "File was not opened", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		outputFile.clear();
+
+		for (int i = 0; i < dayInfo.size(); i++) {
+			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
+				outputFile << dayInfo[i];
+			}
+		}
+		outputFile.close();
+	}
+	else {
+		MessageBox::Show(this, "You have not chosen any element", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
