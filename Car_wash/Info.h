@@ -13,6 +13,8 @@ private:
     std::string startTime;
     std::string endTime;
     std::string date;
+    int income;
+    std::string addinfo;
 
 public:
 
@@ -43,9 +45,14 @@ public:
     {
         date = date_;
     }
-
-
-
+    void setIncome(const int inc_)
+    {
+        income = inc_;
+    }
+    void setInfo(const std::string& inf_)
+    {
+        addinfo = inf_;
+    }
 
 
     const std::string& getName() const
@@ -67,6 +74,14 @@ public:
     const std::string& getDate()const
     {
         return date;
+    }
+    const int getIncome()const
+    {
+        return income;
+    }
+    const std::string& getAddinf()const
+    {
+        return addinfo;
     }
 
     System::String^ GetProperty(const int index) const { 
@@ -105,7 +120,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const CInfo& worker)
     {
         os << worker.fName << " " << worker.procedure << " "
-            << worker.startTime << " " << worker.endTime << " " << worker.date << std::endl;
+            << worker.startTime << " " << worker.endTime << " " << worker.date << " " << worker.addinfo << std::endl;
         return os;
     }
 };

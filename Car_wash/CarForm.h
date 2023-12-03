@@ -3,6 +3,7 @@
 #include <fstream>
 #include <algorithm>
 #include <cctype>
+#include <string>
 #include <windows.h>
 #using <System.dll>
 #using <System.Drawing.dll>
@@ -51,6 +52,8 @@ namespace Carwash {
 	public:
 	private: System::Windows::Forms::CheckBox^ checkBox2;
 	private: System::Windows::Forms::CheckBox^ checkBox3;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::TextBox^ textBox1;
 		   EmplForm obj;
 	protected:
 		/// <summary>
@@ -142,6 +145,8 @@ namespace Carwash {
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->toolStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -221,7 +226,7 @@ namespace Carwash {
 				static_cast<System::Byte>(204)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(186)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			this->label3->Location = System::Drawing::Point(42, 268);
+			this->label3->Location = System::Drawing::Point(42, 232);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(100, 25);
 			this->label3->TabIndex = 5;
@@ -234,7 +239,7 @@ namespace Carwash {
 				static_cast<System::Byte>(204)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(217)), static_cast<System::Int32>(static_cast<System::Byte>(186)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			this->label4->Location = System::Drawing::Point(174, 268);
+			this->label4->Location = System::Drawing::Point(174, 232);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(91, 25);
 			this->label4->TabIndex = 6;
@@ -242,14 +247,14 @@ namespace Carwash {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(46, 305);
+			this->textBox2->Location = System::Drawing::Point(46, 269);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 26);
 			this->textBox2->TabIndex = 7;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(178, 305);
+			this->textBox3->Location = System::Drawing::Point(178, 269);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(100, 26);
 			this->textBox3->TabIndex = 8;
@@ -266,7 +271,7 @@ namespace Carwash {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(611, 428);
+			this->dataGridView1->Size = System::Drawing::Size(611, 392);
 			this->dataGridView1->TabIndex = 12;
 			// 
 			// Column1
@@ -312,7 +317,7 @@ namespace Carwash {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.830189F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(46, 525);
+			this->button1->Location = System::Drawing::Point(46, 514);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(198, 66);
 			this->button1->TabIndex = 13;
@@ -328,7 +333,7 @@ namespace Carwash {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.830189F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(707, 525);
+			this->button2->Location = System::Drawing::Point(486, 515);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(200, 66);
 			this->button2->TabIndex = 14;
@@ -339,7 +344,7 @@ namespace Carwash {
 			// label5
 			// 
 			this->label5->BackColor = System::Drawing::Color::White;
-			this->label5->Location = System::Drawing::Point(94, 344);
+			this->label5->Location = System::Drawing::Point(94, 308);
 			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(150, 35);
@@ -350,7 +355,7 @@ namespace Carwash {
 			// label6
 			// 
 			this->label6->BackColor = System::Drawing::Color::White;
-			this->label6->Location = System::Drawing::Point(94, 391);
+			this->label6->Location = System::Drawing::Point(94, 355);
 			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(150, 47);
@@ -361,7 +366,7 @@ namespace Carwash {
 			// label7
 			// 
 			this->label7->BackColor = System::Drawing::Color::White;
-			this->label7->Location = System::Drawing::Point(94, 448);
+			this->label7->Location = System::Drawing::Point(94, 412);
 			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(150, 35);
@@ -377,7 +382,7 @@ namespace Carwash {
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.830189F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->button4->ForeColor = System::Drawing::Color::White;
-			this->button4->Location = System::Drawing::Point(370, 525);
+			this->button4->Location = System::Drawing::Point(265, 515);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(200, 65);
 			this->button4->TabIndex = 19;
@@ -414,7 +419,7 @@ namespace Carwash {
 			// radioButton1
 			// 
 			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(48, 351);
+			this->radioButton1->Location = System::Drawing::Point(48, 315);
 			this->radioButton1->Name = L"radioButton1";
 			this->radioButton1->Size = System::Drawing::Size(21, 20);
 			this->radioButton1->TabIndex = 22;
@@ -424,7 +429,7 @@ namespace Carwash {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(48, 404);
+			this->radioButton2->Location = System::Drawing::Point(48, 368);
 			this->radioButton2->Name = L"radioButton2";
 			this->radioButton2->Size = System::Drawing::Size(21, 20);
 			this->radioButton2->TabIndex = 23;
@@ -434,7 +439,7 @@ namespace Carwash {
 			// radioButton3
 			// 
 			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(48, 455);
+			this->radioButton3->Location = System::Drawing::Point(48, 419);
 			this->radioButton3->Name = L"radioButton3";
 			this->radioButton3->Size = System::Drawing::Size(21, 20);
 			this->radioButton3->TabIndex = 24;
@@ -468,6 +473,31 @@ namespace Carwash {
 			this->checkBox3->TabIndex = 27;
 			this->checkBox3->UseVisualStyleBackColor = true;
 			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(158)), static_cast<System::Int32>(static_cast<System::Byte>(103)),
+				static_cast<System::Int32>(static_cast<System::Byte>(82)));
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 8.830189F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button3->ForeColor = System::Drawing::Color::White;
+			this->button3->Location = System::Drawing::Point(707, 515);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(200, 66);
+			this->button3->TabIndex = 28;
+			this->button3->Text = L"File info";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &CarForm::button3_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(48, 462);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(853, 37);
+			this->textBox1->TabIndex = 29;
+			this->textBox1->Visible = false;
+			// 
 			// CarForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -475,6 +505,8 @@ namespace Carwash {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(33)),
 				static_cast<System::Int32>(static_cast<System::Byte>(43)));
 			this->ClientSize = System::Drawing::Size(945, 632);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->checkBox3);
 			this->Controls->Add(this->checkBox2);
 			this->Controls->Add(this->checkBox1);
@@ -522,7 +554,7 @@ namespace Carwash {
 
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+	this->textBox1->Visible = false;
 	if (checkBox1->Checked) {
 
 		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
@@ -540,20 +572,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		CInfo* elem = new CInfo(obj.list->GetName1(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			elem->setIncome(350 / am);
 			Salary1 += 350/am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			elem->setIncome(750 / am);
 			Salary1 += 750/am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			elem->setIncome(1800 / am);
 			Salary1 += 1800/am;
 		}
+		elem->setInfo(marshal_as<std::string>(textBox1->Text));
+
 		dayInfo.push_back(*elem);
 		refill();
 
-		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+		std::string filename = "table_of_" + msclr::interop::marshal_as<std::string>(dateTimePicker1->Text->Replace(" ", "")) + ".txt";
 
 		const char* fileName = filename.c_str();
 
@@ -607,20 +644,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		CInfo* elem = new CInfo(obj.list->GetName2(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			elem->setIncome(350 / am);
 			Salary2 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			elem->setIncome(750 / am);
 			Salary2 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			elem->setIncome(1800 / am);
 			Salary2 += 1800 / am;
 		}
+		elem->setInfo(marshal_as<std::string>(textBox1->Text));
+
 		dayInfo.push_back(*elem);
 		refill();
 
-		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+		std::string filename = "table_of_" + msclr::interop::marshal_as<std::string>(dateTimePicker1->Text->Replace(" ", "")) + ".txt";
 
 		const char* fileName = filename.c_str();
 
@@ -674,20 +716,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		CInfo* elem = new CInfo(obj.list->GetName3(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
 			elem->setProcedure("Кузов");
+			elem->setIncome(350 / am);
 			Salary3 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
 			elem->setProcedure("Кузов + Салон");
+			elem->setIncome(750 / am);
 			Salary3 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
 			elem->setProcedure("Хімчистка");
+			elem->setIncome(1800 / am);
 			Salary3 += 1800 / am;
 		}
+		elem->setInfo(marshal_as<std::string>(textBox1->Text));
+
 		dayInfo.push_back(*elem);
 		refill();
 
-		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+		std::string filename = "table_of_" + msclr::interop::marshal_as<std::string>(dateTimePicker1->Text->Replace(" ", "")) + ".txt";
 
 		const char* fileName = filename.c_str();
 
@@ -728,7 +775,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void toolStripButton1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
-
 private: System::Void toolStripLabel1_Click(System::Object^ sender, System::EventArgs^ e) {
 	obj.ShowDialog();
 	
@@ -765,39 +811,14 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		int i = dayInfo.size() - 1;
 		int selectedIndex = dataGridView1->SelectedRows[0]->Index; // знаходження вибраного елементу
 
-		if (dayInfo[selectedIndex].getProcedure() == "Кузов") {
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
-			//	Salary1 -= 350 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
-			//	Salary2 -= 350 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
-			//	Salary3 -= 350 / ;
-			}
-
+		if (msclr::interop::marshal_as<System::String^>(dayInfo[selectedIndex].getName()) == label1->Text) {
+			Salary1 -= dayInfo[selectedIndex].getIncome();
 		}
-		else if (dayInfo[selectedIndex].getProcedure() == "Кузов + Салон") {
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
-			//	Salary1 -= 750 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
-			//	Salary2 -= 750 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
-			//	Salary3 -= 750 / ;
-			}
+		if (msclr::interop::marshal_as<System::String^>(dayInfo[selectedIndex].getName()) == label8->Text) {
+			Salary2 -= dayInfo[selectedIndex].getIncome();
 		}
-		else {
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label1->Text)) {
-			//	Salary1 -= 1800 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label2->Text)) {
-			//	Salary2 -= 1800 / ;
-			}
-			if (dayInfo[selectedIndex].getName() == marshal_as<std::string>(label3->Text)) {
-			//	Salary3 -= 1800 / ;
-			}
+		if (msclr::interop::marshal_as<System::String^>(dayInfo[selectedIndex].getName()) == label9->Text) {
+			Salary3 -= dayInfo[selectedIndex].getIncome();
 		}
 
 		dataGridView1->RowCount--;
@@ -828,7 +849,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 			}
 		}
 
-		std::string filename = "table_of_" + marshal_as<std::string>(dateTimePicker1->Text) + ".txt";
+		std::string filename = "table_of_" + msclr::interop::marshal_as<std::string>(dateTimePicker1->Text->Replace(" ", "")) + ".txt";
 
 		const char* fileName = filename.c_str();
 
@@ -844,10 +865,24 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 		outputFile.clear();
 
 		for (int i = 0; i < dayInfo.size(); i++) {
-			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)) {
+			if (dayInfo[i].getDate() == marshal_as<std::string>(dateTimePicker1->Text)){
 				outputFile << dayInfo[i];
 			}
 		}
+
+		if (obj.list->GetAmount() == 3) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+			outputFile << obj.list->GetName3() << " : " << Salary3 / 2 << std::endl;
+		}
+		else if (obj.list->GetAmount() == 2) {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+			outputFile << obj.list->GetName2() << " : " << Salary2 / 2 << std::endl;
+		}
+		else {
+			outputFile << obj.list->GetName1() << " : " << Salary1 / 2 << std::endl;
+		}
+
 		outputFile.close();
 	}
 	else {
@@ -856,6 +891,49 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	}
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	if (dataGridView1->SelectedRows->Count > 0) {
+		this->textBox1->Visible = false;
+		// перевірка, чи елемент вибрано
+		int i = dayInfo.size() - 1;
+		int selectedIndex = dataGridView1->SelectedRows[0]->Index; // знаходження вибраного елементу
+
+		std::string Text = dayInfo[selectedIndex].getAddinf();
+
+		System::String^ STRText = gcnew System::String(Text.c_str());
+		MessageBox::Show(this, STRText, "Info", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	else {
+		this->textBox1->Visible = true;
+		return;
+	}
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	// Specify the full path to the file
+	std::string stdStr = msclr::interop::marshal_as<std::string>(dateTimePicker1->Text->Replace(" ", "")) + ".txt";
+	std::string fullPath = "E:\\Slavery\\ONLY_FANS\\2curs\\Team_w\\Team_work\\Car_wash\\table_of_" + stdStr;  // Update this with the actual path
+
+	const char* charStr = fullPath.c_str();
+
+	std::ifstream fin(charStr);
+	if (!fin.is_open()) {
+		std::cerr << "Error opening file for reading." << std::endl;
+		return;
+	}
+
+	std::string line;
+	std::string Text;
+	while (std::getline(fin, line)) {
+		Text += line;
+		Text += "\n";
+	}
+
+	fin.close();
+
+	System::String^ STRText = gcnew System::String(Text.c_str());
+	MessageBox::Show(this, STRText, "Info", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
 }
 };
 }
