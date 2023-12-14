@@ -1,6 +1,6 @@
 ﻿  CarForm.cpp
-E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(811,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(844,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(898,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(832,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(865,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\CarForm.h(919,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   CarForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Car_wash.vcxproj -> E:\Slavery\ONLY_FANS\2curs\Team_w\Team_work\Car_wash\x64\Debug\Car_wash.exe

@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
 #include <cctype>
 #include <string>
 #include <windows.h>
@@ -28,12 +30,6 @@ namespace Carwash {
 	using namespace msclr::interop;
 	using namespace System::IO;
 
-
-	bool containsNonDigitAndColon(const std::string& str) {
-		return std::any_of(str.begin(), str.end(), [](unsigned char c) {
-			return !std::isdigit(c) && c != ':';
-			});
-	}
 
 	/// <summary>
 	/// Summary for CarForm
@@ -552,13 +548,30 @@ namespace Carwash {
 			}
 		}
 
+		int convertTimeToMinutes(const std::string& timeStr) {
+			std::istringstream ss(timeStr);
+			int hours, minutes;
+
+			char colon;
+			if (!(ss >> hours >> colon >> minutes) || colon != ':') {
+				std::cerr << "Invalid time format: " << timeStr << std::endl;
+				return -1;
+			}
+
+			int totalMinutes = hours * 60 + minutes;
+			return totalMinutes;
+		}
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->textBox1->Visible = false;
 	if (checkBox1->Checked) {
 
-		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
-			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) == -1 || -1 == convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
+			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 		int am = 1;
@@ -628,8 +641,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (checkBox2->Checked) {
 
-		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
-			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) == -1 || -1 == convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
+			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 
@@ -700,8 +717,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (checkBox3->Checked) {
 
-		if (containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text)) || containsNonDigitAndColon(marshal_as<std::string>(textBox2->Text))) {
-			MessageBox::Show(this, "Enter correct time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) == -1 || -1 == convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
+			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 
