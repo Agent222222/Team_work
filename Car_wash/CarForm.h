@@ -80,7 +80,8 @@ namespace Carwash {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::ToolStripButton^ toolStripButton1;
+	private: System::Windows::Forms::ToolStripButton^ Exit;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
@@ -113,7 +114,7 @@ namespace Carwash {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CarForm::typeid));
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->toolStripLabel1 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
-			this->toolStripButton1 = (gcnew System::Windows::Forms::ToolStripButton());
+			this->Exit = (gcnew System::Windows::Forms::ToolStripButton());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -152,36 +153,37 @@ namespace Carwash {
 			this->toolStrip1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(83)), static_cast<System::Int32>(static_cast<System::Byte>(65)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->toolStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->toolStrip1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->toolStripLabel1,
-					this->toolStripButton1
+					this->Exit
 			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Padding = System::Windows::Forms::Padding(0, 0, 3, 0);
-			this->toolStrip1->Size = System::Drawing::Size(945, 34);
+			this->toolStrip1->Size = System::Drawing::Size(945, 38);
 			this->toolStrip1->TabIndex = 0;
 			this->toolStrip1->Text = L"toolStrip1";
 			// 
 			// toolStripLabel1
 			// 
 			this->toolStripLabel1->Name = L"toolStripLabel1";
-			this->toolStripLabel1->Size = System::Drawing::Size(208, 29);
+			this->toolStripLabel1->Size = System::Drawing::Size(208, 33);
 			this->toolStripLabel1->Text = L"Amount of employees";
 			this->toolStripLabel1->Click += gcnew System::EventHandler(this, &CarForm::toolStripLabel1_Click);
 			// 
-			// toolStripButton1
+			// Exit
 			// 
-			this->toolStripButton1->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
-			this->toolStripButton1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-			this->toolStripButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
-			this->toolStripButton1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripButton1.Image")));
-			this->toolStripButton1->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->toolStripButton1->MergeAction = System::Windows::Forms::MergeAction::MatchOnly;
-			this->toolStripButton1->Name = L"toolStripButton1";
-			this->toolStripButton1->Size = System::Drawing::Size(34, 29);
-			this->toolStripButton1->Text = L"toolStripButton1";
-			this->toolStripButton1->Click += gcnew System::EventHandler(this, &CarForm::toolStripButton1_Click);
+			this->Exit->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+			this->Exit->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->Exit->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Image;
+			this->Exit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Exit.Image")));
+			this->Exit->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->Exit->MergeAction = System::Windows::Forms::MergeAction::MatchOnly;
+			this->Exit->Name = L"Exit";
+			this->Exit->Size = System::Drawing::Size(34, 33);
+			this->Exit->Text = L"toolStripButton1";
+			this->Exit->Click += gcnew System::EventHandler(this, &CarForm::toolStripButton1_Click);
 			// 
 			// label1
 			// 
@@ -528,6 +530,7 @@ namespace Carwash {
 			this->Controls->Add(this->toolStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"CarForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"CarForm";
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
@@ -570,7 +573,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 || 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
 			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
@@ -584,19 +587,31 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		CInfo* elem = new CInfo(obj.list->GetName1(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 30) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов");
 			elem->setIncome(350 / am);
-			Salary1 += 350/am;
+			Salary1 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 60) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов + Салон");
 			elem->setIncome(750 / am);
-			Salary1 += 750/am;
+			Salary1 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 240) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Хімчистка");
 			elem->setIncome(1800 / am);
-			Salary1 += 1800/am;
+			Salary1 += 1800 / am;
 		}
 		elem->setInfo(marshal_as<std::string>(textBox1->Text));
 
@@ -645,11 +660,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 || 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
 			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-
 		int am = 1;
 		if (checkBox1->Checked) {
 			am++;
@@ -660,16 +674,28 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		CInfo* elem = new CInfo(obj.list->GetName2(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 30) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов");
 			elem->setIncome(350 / am);
 			Salary2 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 60) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов + Салон");
 			elem->setIncome(750 / am);
 			Salary2 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 240) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Хімчистка");
 			elem->setIncome(1800 / am);
 			Salary2 += 1800 / am;
@@ -721,7 +747,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			MessageBox::Show(this, "Incorect time format ! \n Correct example < 12:00 > ", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 && 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox2->Text))) {
+		if (convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) < 480 || 1200 < convertTimeToMinutes(marshal_as<std::string>(textBox3->Text))) {
 			MessageBox::Show(this, "It is too early or too late to work", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
@@ -736,16 +762,28 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		CInfo* elem = new CInfo(obj.list->GetName3(), marshal_as<std::string>(textBox2->Text), marshal_as<std::string>(textBox3->Text), marshal_as<std::string>(dateTimePicker1->Text));
 		if (radioButton1->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 30) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов");
 			elem->setIncome(350 / am);
 			Salary3 += 350 / am;
 		}
 		else if (radioButton2->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 60) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Кузов + Салон");
 			elem->setIncome(750 / am);
 			Salary3 += 750 / am;
 		}
 		else if (radioButton3->Checked) {
+			if (convertTimeToMinutes(marshal_as<std::string>(textBox3->Text)) - convertTimeToMinutes(marshal_as<std::string>(textBox2->Text)) > 240) {
+				MessageBox::Show(this, "your workers are not done in time", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
 			elem->setProcedure("Хімчистка");
 			elem->setIncome(1800 / am);
 			Salary3 += 1800 / am;
